@@ -6,9 +6,7 @@ const Transaction = require('../../models/Transaction');
 router.get("/test", (req, res) => res.json({ message: "Transactions route"}));
 
 router.get("/", (req, res) => {
-  const category = req.query.category;
-  const description = req.query.description;
-  const value = req.query.value;
+  const { category, description, value } = req.query;
 
   const options = {};
   if (category) {
@@ -28,5 +26,17 @@ router.get("/", (req, res) => {
       return res.status(404).json({ noTransactions: 'No transactions found' });
     });
 });
+
+router.post("/", (req, res) => {
+  const { category, description, value } = req.body;
+
+  const newTransaction = new Transaction({
+    description,
+    category,
+    value,
+  });
+
+  newTransaction.save().then(transaction => res.json(transaction));
+})
 
 module.exports = router;
