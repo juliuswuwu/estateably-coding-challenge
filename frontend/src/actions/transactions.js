@@ -1,5 +1,6 @@
 export const RECEIVE_TRANSACTIONS = "transactions/RECEIVE_TRANSACTIONS";
 export const RECEIVE_NEW_TRANSACTION = "transactions/RECEIVE_NEW_TRANSACTION";
+export const RECEIVE_ERRORS = "transactions/RECEIVE_ERRORS";
 
 export const receiveTransactions = transactions => ({
   type: RECEIVE_TRANSACTIONS,
@@ -9,7 +10,12 @@ export const receiveTransactions = transactions => ({
 export const receiveNewTransaction = transaction => ({
   type: RECEIVE_NEW_TRANSACTION,
   transaction
-})
+});
+
+export const receiveErrors = errors => ({
+  type: RECEIVE_ERRORS,
+  errors
+});
 
 export const fetchTransactions = (values={}) => async (dispatch) => {
   const { description, category, value } = values;
@@ -30,6 +36,9 @@ export const fetchTransactions = (values={}) => async (dispatch) => {
   if (response.ok) {
     const transactions = await response.json();
     dispatch(receiveTransactions(transactions));
+  } else {
+    const errors = await response.json();
+    dispatch(receiveErrors(errors));
   }
 }
 
@@ -43,5 +52,8 @@ export const createTransaction = (values) => async (dispatch) => {
   if (response.ok) {
     const transaction = await response.json();
     dispatch(receiveNewTransaction(transaction));
+  } else {
+    const errors = await response.json();
+    dispatch(receiveErrors(errors));
   }
 }
