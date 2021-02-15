@@ -3,9 +3,10 @@ import { RECEIVE_TRANSACTIONS, RECEIVE_NEW_TRANSACTION } from '../actions/transa
 const TransactionsReducer = (state = {}, action) => {
   Object.freeze(state);
   let newState = Object.assign({}, state);
-  
+
   switch (action.type) {
     case RECEIVE_TRANSACTIONS:
+      newState = {};
       action.transactions.forEach(transaction => {
         newState[transaction._id] = transaction;
       });

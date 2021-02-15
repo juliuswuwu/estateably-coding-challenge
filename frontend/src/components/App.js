@@ -4,6 +4,7 @@ import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { fetchTransactions, createTransaction } from '../actions/transactions';
+import FilterTransactionsForm from './FilterTransactionsForm';
 import TransactionForm from './TransactionForm';
 
 function App() {
@@ -19,11 +20,17 @@ function App() {
     dispatch(createTransaction(values));
   }
 
+  const filter = values => {
+    console.log(values);
+    dispatch(fetchTransactions(values));
+  }
+
   return (
     <div className="App">
       <header className="App-header">
         <h1>Estateably Code Challenge</h1>
       </header>
+      <FilterTransactionsForm onSubmit={filter} />
       <div>
         <ul>
           {Object.keys(transactions).map(id => (

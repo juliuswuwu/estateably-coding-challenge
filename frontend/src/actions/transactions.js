@@ -11,11 +11,25 @@ export const receiveNewTransaction = transaction => ({
   transaction
 })
 
-export const fetchTransactions = () => async (dispatch) => {
-  const response = await fetch(`/api/transactions`);
-
+export const fetchTransactions = (values={}) => async (dispatch) => {
+  const { description, category, value } = values;
+  
+  let queryString = '?';
+  if (category && category !== 'Select a category...') {
+    queryString += `category=${category}`;
+  }
+  if (description) {
+    queryString += `description=${description}`;
+  }
+  if (value) {
+    queryString += `value=${value}`;
+  }
+  console.log(queryString);
+  const response = await fetch(`/api/transactions${queryString}`);
+  
   if (response.ok) {
     const transactions = await response.json();
+    console.log(transactions);
     dispatch(receiveTransactions(transactions));
   }
 }
