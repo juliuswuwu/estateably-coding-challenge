@@ -1,5 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import { reset } from 'redux-form';
 import { createTransaction } from '../../actions/transactions';
 import TransactionForm from './TransactionForm';
 import './CreateTransaction.css';
@@ -9,6 +10,7 @@ const CreateTransaction = () => {
 
   const submit = values => {
     dispatch(createTransaction(values));
+    dispatch(reset('createTransaction'));
   }
 
   return (
