@@ -2,6 +2,7 @@ import React from 'react';
 import TransactionsFilter from './filter/TransactionsFilter';
 import TransactionsTable from './table/TransactionsTable';
 import CreateTransaction from './create/CreateTransaction';
+import Errors from './Errors';
 import './App.css';
 
 const App = () => {
@@ -17,6 +18,7 @@ const App = () => {
         <div className="title">
           <h3>Account Transactions</h3>
         </div>
+        <Errors />
         <TransactionsFilter />
         <TransactionsTable />
         <CreateTransaction />
