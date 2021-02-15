@@ -10,34 +10,38 @@
   - Response
     ```
     200
-    {
-      date,
-      description,
-      category,
-      value
-    }
+    [
+      {
+        _id: String,
+        createdAt: Date,
+        updatedAt: Date,
+        description: String,
+        category: String,
+        value: Numeric
+      },
+    ...
+    ]
     ```
 
 - POST
   - Description
-    - creates one or more transactions
+    - creates a new transaction
   - Request body
     ```
     {
-      date,
-      description,
-      category,
-      value
+      description: String,
+      category: String,
+      value: Numeric
     }
     ```
   - Response
     ```
     200
     {
-      date,
-      description,
-      category,
-      value
+      date: Date,
+      description: String,
+      category: String,
+      value: Numeric
     }
     ```
 
@@ -52,10 +56,25 @@
   - Response
     ```
     200
+    [
+      {
+        _id: String,
+        createdAt: Date,
+        updatedAt: Date,
+        description: String,
+        category: String,
+        value: Numeric
+      },
+    ...
+    ]
+
+    400
     {
-      date,
-      description,
-      category,
-      value
+      errors: {
+        description: "Description field is required",
+        category: "Category field is required",
+        value: "Value is invalid"
+      },
+      isValid: false
     }
     ```
