@@ -1,10 +1,18 @@
 const express = require('express');
 const router = express.Router();
 const Transaction = require('../../models/Transaction');
+const validateTransactionData = require('../../validation/transactions');
+const validateTransactionQuery = require('../../validation/transaction-query');
 
 router.get("/test", (req, res) => res.json({ message: "Transactions route"}));
 
 router.get("/", (req, res) => {
+  const { errors, isValid } = validateTransactionQuery(req.query);
+
+  if (!isValid) {
+    return res.status(400).json(errors);
+  }
+
   const { category, description, value } = req.query;
 
   const options = {};
@@ -27,6 +35,12 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", (req, res) => {
+  const { errors, isValid } = validateTransactionData(req.body);
+
+  if (!isValid) {
+    return res.status(400).json(errors);
+  }
+
   const { category, description, value } = req.body;
 
   const newTransaction = new Transaction({
