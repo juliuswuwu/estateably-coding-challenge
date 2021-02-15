@@ -1,5 +1,6 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
+import './FilterTransactionsForm.css';
 
 const categories = ["Salary", "Food", "Transport", "House", "Other"];
 
@@ -7,20 +8,18 @@ let FilterTransactionsForm = props => {
   const { handleSubmit } = props;
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="FilterTransactionsForm">
       <div>
-        <label htmlFor="description">Transaction Description</label>
         <Field
           name="description"
           component="input"
           type="text"
-          placeholder="Optional"
+          placeholder="Description"
         />
       </div>
       <div>
-        <label htmlFor="category">Transaction Category</label>
         <Field name="category" component="select">
-          <option value="">Select a category...</option>
+          <option value="">Category...</option>
           {categories.map(category => (
             <option value={category} key={category}>
               {category}
@@ -29,15 +28,14 @@ let FilterTransactionsForm = props => {
         </Field>
       </div>
       <div>
-        <label htmlFor="value">Transaction Value</label>
-        <Field 
-          name="value" 
-          component="input" 
+        <Field
+          name="value"
+          component="input"
           type="number"
-          placeholder="Optional" 
+          placeholder="Value"
         />
       </div>
-      <button type="submit">Submit</button>
+      <button type="submit">Filter</button>
     </form>
   );
 }

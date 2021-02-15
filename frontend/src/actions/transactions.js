@@ -16,20 +16,19 @@ export const fetchTransactions = (values={}) => async (dispatch) => {
   
   let queryString = '?';
   if (category && category !== 'Select a category...') {
-    queryString += `category=${category}`;
+    queryString += `category=${category}&`;
   }
   if (description) {
-    queryString += `description=${description}`;
+    queryString += `description=${description}&`;
   }
   if (value) {
     queryString += `value=${value}`;
   }
-  console.log(queryString);
+
   const response = await fetch(`/api/transactions${queryString}`);
   
   if (response.ok) {
     const transactions = await response.json();
-    console.log(transactions);
     dispatch(receiveTransactions(transactions));
   }
 }

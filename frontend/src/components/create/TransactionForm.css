@@ -1,0 +1,12 @@
+.TransactionForm {
+  width: 80%;
+}
+
+.TransactionForm>div {
+  margin-top: 10px;
+  text-align: left;
+}
+
+.TransactionForm>div>label {
+  padding-left: 10px;
+}

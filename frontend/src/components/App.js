@@ -1,44 +1,26 @@
-// import logo from './logo.svg';
-// import './App.css';
-import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
-import { fetchTransactions, createTransaction } from '../actions/transactions';
-import FilterTransactionsForm from './FilterTransactionsForm';
-import TransactionForm from './TransactionForm';
+import React from 'react';
+import TransactionsFilter from './filter/TransactionsFilter';
+import TransactionsTable from './table/TransactionsTable';
+import CreateTransaction from './create/CreateTransaction';
+import './App.css';
 
-function App() {
-  const transactions = useSelector(state => state.transactions);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchTransactions());
-  }, []);
-
-  const submit = values => {
-    console.log(values);
-    dispatch(createTransaction(values));
-  }
-
-  const filter = values => {
-    console.log(values);
-    dispatch(fetchTransactions(values));
-  }
+const App = () => {
 
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Estateably Code Challenge</h1>
+        <img className="logo" src="https://uploads-ssl.webflow.com/5f8cd301c7688b13baf71568/5f8f7c0a813b9ec68d9994ad_Group%20129.svg" />
+        <h1>Code Challenge</h1>
+        <h2>Harry Higgins</h2>
       </header>
-      <FilterTransactionsForm onSubmit={filter} />
-      <div>
-        <ul>
-          {Object.keys(transactions).map(id => (
-            <li key="id">{`${transactions[id].description}, ${transactions[id].category}, ${transactions[id].value}`}</li>
-          ))}
-        </ul>
-      </div>
-      <TransactionForm onSubmit={submit} />
+      <main>
+        <div className="title">
+          <h3>Account Transactions</h3>
+        </div>
+        <TransactionsFilter />
+        <TransactionsTable />
+        <CreateTransaction />
+      </main>
     </div>
   );
 }
