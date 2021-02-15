@@ -10,18 +10,18 @@ let TransactionForm = props => {
     <form className="TransactionForm" onSubmit={handleSubmit}>
       <div>
         <label htmlFor="description">Description</label>
-        <Field 
-          name="description" 
-          component="input" 
-          type="text" 
-          placeholder="Description" 
+        <Field
+          name="description"
+          component="input"
+          type="text"
+          placeholder="Description"
         />
       </div>
       <div>
         <label htmlFor="category">Category</label>
         <Field name="category" component="select">
           <option value="">Select a category...</option>
-          { categories.map(category => (
+          {categories.map(category => (
             <option value={category} key={category}>
               {category}
             </option>
@@ -30,10 +30,15 @@ let TransactionForm = props => {
       </div>
       <div>
         <label htmlFor="value">Value</label>
-        <Field name="value" component="input" type="number" />
+        <Field
+          name="value"
+          component="input"
+          type="number"
+          placeholder="Value"
+        />
       </div>
       <div>
-      <button type="submit">Submit</button>
+        <button type="submit">Submit</button>
       </div>
     </form>
   );

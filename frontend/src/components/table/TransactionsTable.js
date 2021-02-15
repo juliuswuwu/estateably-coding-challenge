@@ -1,12 +1,17 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
+import moment from 'moment'
 import { fetchTransactions } from '../../actions/transactions';
 import './TransactionsTable.css';
 
 const TransactionsTable = props => {
   const transactions = useSelector(state => state.transactions);
   const dispatch = useDispatch();
+  const moneyFormat = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+  })
 
   useEffect(() => {
     dispatch(fetchTransactions());
@@ -19,16 +24,16 @@ const TransactionsTable = props => {
           <th>Date</th>
           <th>Description</th>
           <th>Category</th>
-          <th>Amount</th>
+          <th>Value</th>
         </tr>
       </thead>
       <tbody>
       {Object.keys(transactions).map(id => (
         <tr key={id}>
-          <td>{transactions[id].createdAt}</td>
+          <td>{moment(transactions[id].createdAt).format('ll')}</td>
           <td>{transactions[id].description}</td>
           <td>{transactions[id].category}</td>
-          <td>{transactions[id].value}</td>
+          <td className="value">{moneyFormat.format(transactions[id].value)}</td>
         </tr>
       ))}
       </tbody>

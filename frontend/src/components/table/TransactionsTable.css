@@ -6,11 +6,15 @@ table {
 
 th,
 td {
-  padding: 0.25rem;
+  padding: 0.25rem 0.5rem;
   text-align: left;
   border: 1px solid #ccc;
 }
 
 tbody tr:nth-child(odd) {
   background: white;
+}
+
+.value {
+  text-align: right;
 }

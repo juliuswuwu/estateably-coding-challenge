@@ -32,7 +32,7 @@ let FilterTransactionsForm = props => {
           name="value"
           component="input"
           type="number"
-          placeholder="Amount"
+          placeholder="Value"
         />
       </div>
       <button type="submit">Filter</button>
