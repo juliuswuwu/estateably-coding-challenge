@@ -6,7 +6,10 @@
   "scripts": {
     "start": "node app.js",
     "server": "nodemon app.js",
-    "debug": "nodemon --inspect app.js"
+    "debug": "nodemon --inspect app.js",
+    "frontend-install": "npm install --prefix frontend",
+    "frontend": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run frontend\""
   },
   "repository": {
     "type": "git",
@@ -20,6 +23,7 @@
   "homepage": "https://github.com/the-harry-higgins/estateably-coding-challenge#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "concurrently": "^5.3.0",
     "express": "^4.17.1",
     "mongoose": "^5.11.16"
   },
