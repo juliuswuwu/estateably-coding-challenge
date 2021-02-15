@@ -1,21 +1,16 @@
-// import logo from './logo.svg';
-import './App.css';
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { fetchTransactions, createTransaction } from '../actions/transactions';
-import FilterTransactionsForm from './FilterTransactionsForm';
+import { createTransaction } from '../actions/transactions';
+import TransactionsFilter from './TransactionsFilter';
 import TransactionsTable from './TransactionsTable';
 import TransactionForm from './TransactionForm';
+import './App.css';
 
 function App() {
   const dispatch = useDispatch();
 
   const submit = values => {
     dispatch(createTransaction(values));
-  }
-
-  const filter = values => {
-    dispatch(fetchTransactions(values));
   }
 
   return (
@@ -26,7 +21,10 @@ function App() {
         <h2>Harry Higgins</h2>
       </header>
       <main>
-        <FilterTransactionsForm onSubmit={filter} />
+        <div className="title">
+          <h3>Account Transactions</h3>
+        </div>
+        <TransactionsFilter />
         <TransactionsTable />
         <TransactionForm onSubmit={submit} />
       </main>

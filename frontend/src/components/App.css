@@ -2,7 +2,6 @@
   text-align: center;
 }
 
-
 .App-header {
   background-color: white;
   position: relative;
@@ -26,4 +25,60 @@ main {
   align-items: center;
   justify-content: center;
   width: 100%;
+}
+
+.title {
+  padding: 20px 0;
+}
+
+/* Form stuff */
+input[type=text],
+input[type=number],
+select {
+  font-family: inherit;
+  font-size: inherit;
+  padding: 10px;
+  border: 0;
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+  border-radius: 10px;
+  color: #383838;
+  width: 100%;
+}
+
+input[type=text]:hover,
+input[type=number]:hover,
+select:hover {
+  border: 1px solid #aaa;
+}
+
+input[type=text]:focus,
+input[type=number]:focus,
+select:focus {
+  border: 1px solid #aaa;
+}
+
+button {
+  /* remove default behavior */
+  appearance: none;
+  -webkit-appearance: none;
+
+  font-family: inherit;
+  font-size: inherit;
+  padding: 15px 25px;
+  border: none;
+  color: #fff;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background-image: -webkit-gradient(linear, right top, left top, from(#2186fc), to(#3abdfb));
+  background-image: linear-gradient(270deg, #2186fc, #3abdfb);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+button:active {
+  position: relative;
+  top: 2px;
 }
