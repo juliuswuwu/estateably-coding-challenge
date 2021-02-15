@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { fetchTransactions } from '../actions/transactions';
+import { fetchTransactions } from '../../actions/transactions';
 import './TransactionsTable.css';
 
 const TransactionsTable = props => {

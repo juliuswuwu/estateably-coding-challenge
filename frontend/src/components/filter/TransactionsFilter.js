@@ -1,10 +1,10 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { fetchTransactions } from '../actions/transactions';
+import { fetchTransactions } from '../../actions/transactions';
 import FilterTransactionsForm from './FilterTransactionsForm';
 import './TransactionsFilter.css';
 
-function TransactionsFilter() {
+const  TransactionsFilter = () => {
   const dispatch = useDispatch();
 
   const filter = values => {

@@ -1,17 +1,10 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
-import { createTransaction } from '../actions/transactions';
-import TransactionsFilter from './TransactionsFilter';
-import TransactionsTable from './TransactionsTable';
-import TransactionForm from './TransactionForm';
+import TransactionsFilter from './filter/TransactionsFilter';
+import TransactionsTable from './table/TransactionsTable';
+import CreateTransaction from './create/CreateTransaction';
 import './App.css';
 
-function App() {
-  const dispatch = useDispatch();
-
-  const submit = values => {
-    dispatch(createTransaction(values));
-  }
+const App = () => {
 
   return (
     <div className="App">
@@ -26,7 +19,7 @@ function App() {
         </div>
         <TransactionsFilter />
         <TransactionsTable />
-        <TransactionForm onSubmit={submit} />
+        <CreateTransaction />
       </main>
     </div>
   );
