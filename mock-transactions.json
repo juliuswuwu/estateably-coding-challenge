@@ -1,0 +1,26 @@
+[{
+    "description": "Safeway",
+    "category": "Food",
+    "value": 65
+  },
+  {
+    "description": "Truck payment",
+    "category": "Transport",
+    "value": 500
+  },
+  {
+    "description": "ABC Company",
+    "category": "Salary",
+    "value": 2000
+  },
+  {
+    "description": "Rent",
+    "category": "House",
+    "value": 600
+  },
+  {
+    "description": "Gambling debts",
+    "category": "Other",
+    "value": 10000
+  }
+]

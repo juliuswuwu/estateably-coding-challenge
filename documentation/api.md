@@ -2,7 +2,7 @@
 
 ## Routes
 
-### `users/:id/transactions/`
+### `api/transactions/`
 
 - GET
   - Description
@@ -41,7 +41,7 @@
     }
     ```
 
-### `users/:id/transactions?category={}&description={}&value={}`
+### `api/transactions?category={}&description={}&value={}`
 
 - GET
   - Description
