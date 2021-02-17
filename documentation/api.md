@@ -25,7 +25,7 @@
 
 ### Response
 
-```json
+```
   200
   [
     {
@@ -64,7 +64,7 @@
 
 ### Request Body
 
-```json
+```
   {
     description: String,
     category: String,
@@ -74,7 +74,7 @@
 
 ### Response
 
-```json
+```
   200
   {
     _id: String,
